@@ -1,76 +1,4 @@
-/*
-* ATmega16_WIFI
-* http://www.electronicwings.com
-*
-*/
-
-
-#define F_CPU 1000000UL			/* Define CPU Frequency e.g. here its Ext. 12MHz */
-#include <avr/io.h>					/* Include AVR std. library file */
-#include <util/delay.h>				/* Include Delay header file */
-#include <stdbool.h>				/* Include standard boolean library */
-#include <string.h>					/* Include string library */
-#include <stdio.h>					/* Include standard IO library */
-#include <stdlib.h>					/* Include standard library */
-#include <avr/interrupt.h>			/* Include avr interrupt header file */
-#include "USART_RS232_H_file.h"		/* Include USART header file */
-
-#define SREG _SFR_IO8(0x3F)
-
-#define DEFAULT_BUFFER_SIZE		160
-#define DEFAULT_TIMEOUT			10000
-
-/* Connection Mode */
-#define SINGLE					0
-#define MULTIPLE				1
-
-/* Application Mode */
-#define NORMAL					0
-#define TRANSPERANT				1
-
-/* Application Mode */
-#define STATION							1
-#define ACCESSPOINT						2
-#define BOTH_STATION_AND_ACCESPOINT		3
-
-/* Select Demo */
-#define RECEIVE_DEMO				/* Define RECEIVE demo */
-//#define SEND_DEMO					/* Define SEND demo */
-
-/* Define Required fields shown below */
-#define DOMAIN				"api.thingspeak.com"
-#define PORT				"80"
-#define API_WRITE_KEY		"C7JFHZY54GLCJY38"
-#define CHANNEL_ID			"119922"
-
-#define SSID				"Janith Dialog 4G"
-#define PASSWORD			"71389389598"
-
-enum ESP8266_RESPONSE_STATUS{
-	ESP8266_RESPONSE_WAITING,
-	ESP8266_RESPONSE_FINISHED,
-	ESP8266_RESPONSE_TIMEOUT,
-	ESP8266_RESPONSE_BUFFER_FULL,
-	ESP8266_RESPONSE_STARTING,
-	ESP8266_RESPONSE_ERROR
-};
-
-enum ESP8266_CONNECT_STATUS {
-	ESP8266_CONNECTED_TO_AP,
-	ESP8266_CREATED_TRANSMISSION,
-	ESP8266_TRANSMISSION_DISCONNECTED,
-	ESP8266_NOT_CONNECTED_TO_AP,
-	ESP8266_CONNECT_UNKNOWN_ERROR
-};
-
-enum ESP8266_JOINAP_STATUS {
-	ESP8266_WIFI_CONNECTED,
-	ESP8266_CONNECTION_TIMEOUT,
-	ESP8266_WRONG_PASSWORD,
-	ESP8266_NOT_FOUND_TARGET_AP,
-	ESP8266_CONNECTION_FAILED,
-	ESP8266_JOIN_UNKNOWN_ERROR
-};
+#include "ESP8266_H_file.h"			/* Include ESP8266 header file */
 
 int8_t Response_Status;
 volatile int16_t Counter = 0, pointer = 0;
@@ -235,7 +163,7 @@ uint8_t ESP8266_JoinAccessPoint(char* _SSID, char* _PASSWORD)
 	}
 }
 
-uint8_t ESP8266_connected() 
+uint8_t ESP8266_connected()
 {
 	SendATandExpectResponse("AT+CIPSTATUS", "\r\nOK\r\n");
 	if(strstr(RESPONSE_BUFFER, "STATUS:2"))
@@ -258,9 +186,9 @@ uint8_t ESP8266_Start(uint8_t _ConnectionNumber, char* Domain, char* Port)
 	_atCommand[59] = 0;
 
 	if(SendATandExpectResponse("AT+CIPMUX?", "CIPMUX:0"))
-		sprintf(_atCommand, "AT+CIPSTART=\"TCP\",\"%s\",%s", Domain, Port);
+	sprintf(_atCommand, "AT+CIPSTART=\"TCP\",\"%s\",%s", Domain, Port);
 	else
-		sprintf(_atCommand, "AT+CIPSTART=\"%d\",\"TCP\",\"%s\",%s", _ConnectionNumber, Domain, Port);
+	sprintf(_atCommand, "AT+CIPSTART=\"%d\",\"TCP\",\"%s\",%s", _ConnectionNumber, Domain, Port);
 
 	_startResponse = SendATandExpectResponse(_atCommand, "CONNECT\r\n");
 	if(!_startResponse)
@@ -312,62 +240,14 @@ uint16_t Read_Data(char* _buffer)
 	return len;
 }
 
-ISR (USART_RXC_vect)
+ISR (USART_RX_vect)
 {
 	uint8_t oldsrg = SREG;
 	cli();
-	RESPONSE_BUFFER[Counter] = UDR;
+	RESPONSE_BUFFER[Counter] = UDR0;
 	Counter++;
 	if(Counter == DEFAULT_BUFFER_SIZE){
 		Counter = 0; pointer = 0;
 	}
 	SREG = oldsrg;
-}
-
-int main(void)
-{
-	char _buffer[150];
-	uint8_t Connect_Status;
-	#ifdef SEND_DEMO
-	uint8_t Sample = 0;
-	#endif
-
-	USART_Init(115200);						/* Initiate USART with 115200 baud rate */
-	sei();									/* Start global interrupt */
-	
-	while (1)
-	{
-		USART_SendString("Begin\n");
-	}
-	
-	while(!ESP8266_Begin());
-	ESP8266_WIFIMode(BOTH_STATION_AND_ACCESPOINT);/* 3 = Both (AP and STA) */
-	ESP8266_ConnectionMode(SINGLE);			/* 0 = Single; 1 = Multi */
-	ESP8266_ApplicationMode(NORMAL);		/* 0 = Normal Mode; 1 = Transperant Mode */
-	if(ESP8266_connected() == ESP8266_NOT_CONNECTED_TO_AP)
-	ESP8266_JoinAccessPoint(SSID, PASSWORD);
-	ESP8266_Start(0, DOMAIN, PORT);
-	while(1)
-	{
-		Connect_Status = ESP8266_connected();
-		if(Connect_Status == ESP8266_NOT_CONNECTED_TO_AP)
-		ESP8266_JoinAccessPoint(SSID, PASSWORD);
-		if(Connect_Status == ESP8266_TRANSMISSION_DISCONNECTED)
-		ESP8266_Start(0, DOMAIN, PORT);
-
-		#ifdef SEND_DEMO
-		memset(_buffer, 0, 150);
-		sprintf(_buffer, "GET /update?api_key=%s&field1=%d", API_WRITE_KEY, Sample++);
-		ESP8266_Send(_buffer);
-		_delay_ms(15000);	/* Thingspeak server delay */
-		#endif
-		
-		#ifdef RECEIVE_DEMO
-		memset(_buffer, 0, 150);
-		sprintf(_buffer, "GET /channels/%s/feeds/last.txt", CHANNEL_ID);
-		ESP8266_Send(_buffer);
-		Read_Data(_buffer);
-		_delay_ms(600);
-		#endif
-	}
 }

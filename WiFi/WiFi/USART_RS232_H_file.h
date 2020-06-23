@@ -1,8 +1,8 @@
-#ifndef USART_RS232_H_FILE_H_				/* Define library H file if not defined */
+#ifndef USART_RS232_H_FILE_H_			/* Define library H file if not defined */
 #define USART_RS232_H_FILE_H_
 
 #define F_CPU 1000000UL					/* Define CPU clock Frequency e.g. here its 12MHz */
-#include <avr/io.h>							/* Include AVR std. library file */
+#include <avr/io.h>						/* Include AVR std. library file */
 #include <math.h>
 
 #define DOUBLE_SPEED_MODE

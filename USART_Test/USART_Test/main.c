@@ -11,7 +11,7 @@
 int main(void)
 {
 	USART_Init(115200);						/* Initiate USART with 115200 baud rate */
-	sei();								/* Start global interrupt */
+	// sei();								/* Start global interrupt */
 	DDRD |= (1 << PD6);
 	
 	while (1)
@@ -21,6 +21,6 @@ int main(void)
 		if(x=='A'){
 			PORTD ^= (1 << PD6);
 		}
-		_delay_ms(1000);	
+		/* _delay_ms(1000);	*/
 	}
 }
