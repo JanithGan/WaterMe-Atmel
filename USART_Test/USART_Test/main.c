@@ -1,4 +1,4 @@
-#define F_CPU 1000000UL				/* Define CPU Frequency e.g. here its Ext. 12MHz */
+#define F_CPU 1000000UL				/* Define CPU Frequency e.g. here its Ext. 1MHz */
 #include <avr/io.h>					/* Include AVR std. library file */
 #include <util/delay.h>				/* Include Delay header file */
 #include <stdbool.h>				/* Include standard boolean library */
@@ -10,17 +10,19 @@
 
 int main(void)
 {
-	USART_Init(115200);						/* Initiate USART with 115200 baud rate */
-	// sei();								/* Start global interrupt */
-	DDRD |= (1 << PD6);
+	USART_Init(9600);					/* Initiate USART with 9600 baud rate */
+	// sei();							/* Start global interrupt */
 	
 	while (1)
 	{
-		USART_TxChar('A');
-		char x = USART_RxChar();
-		if(x=='A'){
-			PORTD ^= (1 << PD6);
-		}
-		/* _delay_ms(1000);	*/
+		USART_SendString("AT");
+		USART_SendString("\r\n");
+		_delay_ms(3000);
+		//USART_TxChar('A');
+		//char x = USART_RxChar();
+		//if(x=='B'){
+			//PORTD ^= (1 << PD7);
+		//}
+		//_delay_ms(1000);
 	}
 }

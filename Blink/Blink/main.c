@@ -8,11 +8,11 @@ int main(void)
 	DDRD |= (1 << PD7);  // make PD6 an output
 	PORTD ^= (1 << PD7);
 	
-	/* for(;;)
+	for(;;)
 	{
 		PORTD ^= (1 << PD7);  // toggle PD6
 		_delay_ms(1000);  // delay for a second
-	}*/
+	}
 
 	return 0;  // the program executed successfully
 }

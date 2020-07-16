@@ -1,53 +1,75 @@
-#define F_CPU 1000000UL				/* Define CPU Frequency e.g. here its Ext. 12MHz */
-#include <avr/io.h>
+#include "Variables.h"						// Variable Definitions
+#include "Pins.h"							// Pin Definitions
+#include "ESP8266/ESP8266_H_file.h"			// Include ESP8266 header file
+#include "ADC/ADC.h"
 #include <util/delay.h>
-#include "USART_RS232_H_file.h"		
-#include "ESP8266_H_file.h"			/* Include ESP8266 header file */
+
+void sendDeviceData(char* _buffer, char* write_key, char* Data){
+	memset(_buffer, 0, strlen(_buffer));
+	sprintf(_buffer, "GET /apps/thinghttp/send_request?api_key=%s&message=%s", write_key, Data);
+	ESP8266_Send(_buffer);
+	Read_Data(_buffer);
+	_delay_ms(2000);						// ThingSpeak server delay
+}
+
+void receiveDeviceData(int BufferLength, char* read_key){
+	char _buffer[BufferLength];
+	memset(_buffer, 0, BufferLength);
+	sprintf(_buffer, "GET /apps/thinghttp/send_request?api_key=%s", read_key);
+	ESP8266_Send(_buffer);
+	Read_Data(_buffer);
+	_delay_ms(600);
+}
+
+void buzzer_Init(){
+	DDRD |= (1 << BUZZER);					// Make buzzer pin an output
+}
+
+void buzzer_Beep(){
+	PORTD ^= (1 << BUZZER);
+	_delay_ms(1000);
+	PORTD ^= (1 << BUZZER);
+}
 
 int main(void)
 {
-	char _buffer[150];
 	uint8_t Connect_Status;
-	#ifdef SEND_DEMO
-	uint8_t Sample = 0;
-	#endif
-	
-	DDRD |= (1 << PD6);
 
-	USART_Init(115200);						/* Initiate USART with 115200 baud rate */
-	sei();									/* Start global interrupt */
+	// Initiations
+	buzzer_Init();									// Initiate Buzzer
+	InitADC();
+	USART_Init(9600);								// Initiate USART with 9600 baud rate
+	sei();											// Start global interrupt
+	while(!ESP8266_Begin());						// Begin ESP8266 
 	
-	while(!ESP8266_Begin());
+	buzzer_Beep();
+
+	// Setup ESP8266
+	ESP8266_WIFIMode(BOTH_STATION_AND_ACCESPOINT);	// 3 = Both (AP and STA)
+	ESP8266_ConnectionMode(SINGLE);					// 0 = Single; 1 = Multi
+	ESP8266_ApplicationMode(NORMAL);				// 0 = Normal Mode; 1 = Transperant Mode
 	
-	PORTD ^= (1 << PD6);
-	
-	ESP8266_WIFIMode(BOTH_STATION_AND_ACCESPOINT);/* 3 = Both (AP and STA) */
-	ESP8266_ConnectionMode(SINGLE);			/* 0 = Single; 1 = Multi */
-	ESP8266_ApplicationMode(NORMAL);		/* 0 = Normal Mode; 1 = Transperant Mode */
 	if(ESP8266_connected() == ESP8266_NOT_CONNECTED_TO_AP)
-	ESP8266_JoinAccessPoint(SSID, PASSWORD);
-	ESP8266_Start(0, DOMAIN, PORT);
+		ESP8266_JoinAccessPoint(SSID, PASSWORD);	// Join to AP
+		
+	ESP8266_Start(0, DOMAIN, PORT);					// Setup server connection
+	
 	while(1)
 	{
 		Connect_Status = ESP8266_connected();
-		if(Connect_Status == ESP8266_NOT_CONNECTED_TO_AP)
-		ESP8266_JoinAccessPoint(SSID, PASSWORD);
-		if(Connect_Status == ESP8266_TRANSMISSION_DISCONNECTED)
-		ESP8266_Start(0, DOMAIN, PORT);
-
-		#ifdef SEND_DEMO
-		memset(_buffer, 0, 150);
-		sprintf(_buffer, "GET /update?api_key=%s&field1=%d", API_WRITE_KEY, Sample++);
-		ESP8266_Send(_buffer);
-		_delay_ms(15000);	/* Thingspeak server delay */
-		#endif
 		
-		#ifdef RECEIVE_DEMO
-		memset(_buffer, 0, 150);
-		sprintf(_buffer, "GET /channels/%s/feeds/last.txt", CHANNEL_ID);
-		ESP8266_Send(_buffer);
-		Read_Data(_buffer);
-		_delay_ms(600);
-		#endif
+		if(Connect_Status == ESP8266_NOT_CONNECTED_TO_AP)
+			ESP8266_JoinAccessPoint(SSID, PASSWORD);
+			
+		if(Connect_Status == ESP8266_TRANSMISSION_DISCONNECTED)
+			ESP8266_Start(0, DOMAIN, PORT);
+		
+		char value[150];
+		memset(value, 0, 150);
+		sprintf(value, "{\"Unit 1\":{\"moisture\":1.75,\"temperature\":%u},\"Unit 2\":{\"moisture\":0.15,\"temperature\":20},\"Unit 3\":{\"moisture\":0.05,\"temperature\":15}}", (uint16_t)ReadADC(0));
+		
+		char buffer[200];
+		sendDeviceData(buffer, API_WRITE_KEY, value);
 	}
 }
+

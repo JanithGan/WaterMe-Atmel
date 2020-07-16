@@ -1,5 +1,5 @@
-USART_RS232_C_file.d USART_RS232_C_file.o: .././USART_RS232_C_file.c \
- .././USART_RS232_H_file.h \
+ESP8266/USART_RS232_C_file.d ESP8266/USART_RS232_C_file.o: \
+ ../ESP8266/USART_RS232_C_file.c ../ESP8266/USART_RS232_H_file.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -13,7 +13,7 @@ USART_RS232_C_file.d USART_RS232_C_file.o: .././USART_RS232_C_file.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././USART_RS232_H_file.h:
+../ESP8266/USART_RS232_H_file.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 

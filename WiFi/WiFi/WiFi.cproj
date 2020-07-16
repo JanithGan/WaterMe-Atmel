@@ -20,10 +20,10 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
@@ -120,21 +120,37 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ESP8266_C_file.c">
+    <Compile Include="ADC\ADC.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ESP8266_H_file.h">
+    <Compile Include="ADC\Adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ESP8266\ESP8266_C_file.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ESP8266\ESP8266_H_file.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ESP8266\USART_RS232_C_file.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ESP8266\USART_RS232_H_file.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="USART_RS232_C_file.c">
+    <Compile Include="Pins.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="USART_RS232_H_file.h">
+    <Compile Include="Variables.h">
       <SubType>compile</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ADC\" />
+    <Folder Include="ESP8266" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

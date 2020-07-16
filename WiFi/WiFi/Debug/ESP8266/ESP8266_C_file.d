@@ -1,5 +1,5 @@
-main.d main.o: .././main.c .././Variables.h .././Pins.h \
- .././ESP8266/ESP8266_H_file.h \
+ESP8266/ESP8266_C_file.d ESP8266/ESP8266_C_file.o: \
+ ../ESP8266/ESP8266_C_file.c ../ESP8266/ESP8266_H_file.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -21,13 +21,9 @@ main.d main.o: .././main.c .././Variables.h .././Pins.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././ESP8266/USART_RS232_H_file.h .././ADC/ADC.h
+ ../ESP8266/USART_RS232_H_file.h
 
-.././Variables.h:
-
-.././Pins.h:
-
-.././ESP8266/ESP8266_H_file.h:
+../ESP8266/ESP8266_H_file.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -71,6 +67,4 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
-.././ESP8266/USART_RS232_H_file.h:
-
-.././ADC/ADC.h:
+../ESP8266/USART_RS232_H_file.h:
