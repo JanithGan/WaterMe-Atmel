@@ -8,11 +8,13 @@ void Data_Service_Init(){
 }
 
 void RF_Data_Get(){
-	for (int i = 0; i < NUM_SUB_UNITS; i++ ) {
-		TempData[i] = 50.52 + i;					// Change This to NRF Comm
-		MoistureData[i] = 10.12 + i;
-	}
-	MoistureData[0] = (float)ADC_Read(0);
+	//for (int i = 0; i < NUM_SUB_UNITS; i++ ) {
+		//TempData[i] = 50.52 + i;					// Change This to NRF Comm
+		//MoistureData[i] = 10.12 + i;
+	//}
+	//MoistureData[0] = (float)ADC_Read(0);
+	
+	// Get temperature and moisture data. divide by constants to scale down
 }
 
 void Device_Data_Send(){

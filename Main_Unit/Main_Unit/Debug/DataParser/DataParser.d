@@ -29,6 +29,9 @@ DataParser/DataParser.d DataParser/DataParser.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
+ ../DataParser/../DataService/../NRF/nRF24L01.h \
+ ../DataParser/../DataService/../NRF/../Variables.h \
+ ../DataParser/../DataService/../NRF/../Pins.h \
  ../DataParser/../JSON/cJSON.h
 
 ../DataParser/DataParser.h:
@@ -92,5 +95,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
+
+../DataParser/../DataService/../NRF/nRF24L01.h:
+
+../DataParser/../DataService/../NRF/../Variables.h:
+
+../DataParser/../DataService/../NRF/../Pins.h:
 
 ../DataParser/../JSON/cJSON.h:

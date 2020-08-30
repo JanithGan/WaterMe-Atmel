@@ -31,7 +31,9 @@ main.d main.o: .././main.c .././Variables.h \
  .././DataService/../DataParser/../Pins.h \
  .././DataService/../DataParser/../DataService/DataService.h \
  .././DataService/../DataParser/../JSON/cJSON.h \
- .././DataService/../ESP8266/ESP8266_H_file.h
+ .././DataService/../ESP8266/ESP8266_H_file.h \
+ .././DataService/../NRF/nRF24L01.h \
+ .././DataService/../NRF/../Variables.h .././DataService/../NRF/../Pins.h
 
 .././Variables.h:
 
@@ -110,3 +112,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 .././DataService/../DataParser/../JSON/cJSON.h:
 
 .././DataService/../ESP8266/ESP8266_H_file.h:
+
+.././DataService/../NRF/nRF24L01.h:
+
+.././DataService/../NRF/../Variables.h:
+
+.././DataService/../NRF/../Pins.h:

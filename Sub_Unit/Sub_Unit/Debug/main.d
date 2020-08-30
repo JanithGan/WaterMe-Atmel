@@ -17,7 +17,13 @@ main.d main.o: .././main.c .././Variables.h .././NRF/nRF24L01.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ .././DataService/DataService.h .././DataService/../NRF/nRF24L01.h \
+ .././DataService/../Sensors/Sensors.h \
+ .././DataService/../Sensors/../Pins.h \
+ .././DataService/../Sensors/../Variables.h \
+ .././DataService/../Sensors/../ADC/ADC.h .././Buzzer/Buzzer.h \
+ .././Buzzer/../Variables.h .././Buzzer/../Pins.h
 
 .././Variables.h:
 
@@ -64,3 +70,21 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+.././DataService/DataService.h:
+
+.././DataService/../NRF/nRF24L01.h:
+
+.././DataService/../Sensors/Sensors.h:
+
+.././DataService/../Sensors/../Pins.h:
+
+.././DataService/../Sensors/../Variables.h:
+
+.././DataService/../Sensors/../ADC/ADC.h:
+
+.././Buzzer/Buzzer.h:
+
+.././Buzzer/../Variables.h:
+
+.././Buzzer/../Pins.h:

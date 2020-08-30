@@ -6,17 +6,13 @@
 // CPU Frequency
 #define F_CPU				1000000UL	// 1MHz
 
-// Sensor Readings
-#define TEMP_CONST 120.0				// Tune These
-#define MOIST_CONST 50.2				// Tune These
-#define NUM_MOISTURE_S 5				// Number of Moisture Sensors
-
 // Device Parameters
 #define BUZZER_DELAY		1000
+#define NUM_MOISTURE_S 5				// Number of Moisture Sensors
 
 // -----------------------------------------Global Variables---------------------------------------------------------
 
-float Temparature;			// Temperature Data
-float Moisture;				// Moisture Data
+int Temparature;			// Temperature ADC Data
+int Moisture;				// Moisture ADC Data
 
 #endif /* VARIABLES_H_ */

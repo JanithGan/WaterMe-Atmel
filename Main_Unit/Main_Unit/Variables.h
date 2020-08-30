@@ -24,6 +24,11 @@
 #define NUM_SUB_UNITS		1
 #define BUZZER_DELAY		1000
 
+// Sensor Readings
+#define TEMP_CONST 120.0				// Tune These
+#define MOIST_CONST 50.2				// Tune These
+#define NUM_MOISTURE_S 5				// Number of Moisture Sensors
+
 // Buffer Sizes
 #define DATA_BUFFER_SIZE		50 * NUM_SUB_UNITS 		// Data Buffer size
 #define SETTINGS_BUFFER_SIZE	50 + DATA_BUFFER_SIZE

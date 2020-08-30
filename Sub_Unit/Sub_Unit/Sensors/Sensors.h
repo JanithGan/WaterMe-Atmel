@@ -5,4 +5,7 @@
 #include "../Variables.h"
 #include "../ADC/ADC.h"
 
+void Read_Temp();
+void Read_Moisture();
+
 #endif /* SENSORS_H_ */
