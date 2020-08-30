@@ -1,8 +1,9 @@
 #ifndef VARIABLES_H_
 #define VARIABLES_H_
 
-// -------------------------------------------------Constants--------------------------------------------------------
 #include <stdio.h>						// Include standard IO library
+
+// -------------------------------------------------Constants--------------------------------------------------------
 
 // CPU Frequency
 #define F_CPU				1000000UL	// 1MHz
@@ -24,8 +25,9 @@
 #define BUZZER_DELAY		1000
 
 // Buffer Sizes
-#define DATA_BUFFER_SIZE	50 * NUM_SUB_UNITS 		// Data Buffer size
-#define DEFAULT_BUFFER_SIZE	50 + DATA_BUFFER_SIZE	// ESP8266 Buffer size
+#define DATA_BUFFER_SIZE		50 * NUM_SUB_UNITS 		// Data Buffer size
+#define SETTINGS_BUFFER_SIZE	50 + DATA_BUFFER_SIZE
+#define DEFAULT_BUFFER_SIZE		50 + DATA_BUFFER_SIZE	// ESP8266 Buffer size
 
 // -----------------------------------------Global Variables---------------------------------------------------------
 
@@ -35,6 +37,7 @@ float TempData[NUM_SUB_UNITS];			// Temperature Data
 float MoistureData[NUM_SUB_UNITS];		// Moisture Data
 
 char DataBuffer[DATA_BUFFER_SIZE];		// Data Buffer for JSON
+char SettingsBuffer[SETTINGS_BUFFER_SIZE];
 char _buffer[DEFAULT_BUFFER_SIZE];		// Buffer for ESP8266
 
 #endif /* VARIABLES_H_ */

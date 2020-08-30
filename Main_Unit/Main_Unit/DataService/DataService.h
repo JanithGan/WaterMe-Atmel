@@ -12,5 +12,6 @@
 void Data_Service_Init();
 void RF_Data_Get();
 void Device_Data_Send();
+void Device_Data_Receive();
 
 #endif /* DATASERVICE_H_ */

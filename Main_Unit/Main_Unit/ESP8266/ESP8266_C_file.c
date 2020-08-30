@@ -269,9 +269,9 @@ uint8_t ESP8266_SetAsServer(char* SERVER_MODE, char* SERVER_PORT)
 	_atCommand[19] = 0;
 	
 	if(SendATandExpectResponse(_atCommand, "\r\nOK\r\n"))
-	return ESP8266_SERVER_CONNECTED;
+		return ESP8266_SERVER_CONNECTED;
 	else
-	return ESP8266_SERVER_ERROR;
+		return ESP8266_SERVER_ERROR;
 }
 
 uint16_t Read_Data(char* _buffer)
@@ -279,7 +279,7 @@ uint16_t Read_Data(char* _buffer)
 	uint16_t len = 0;
 	_delay_ms(100);
 	while(ESP8266_DataAvailable() > 0)
-	_buffer[len++] = ESP8266_DataRead();
+		_buffer[len++] = ESP8266_DataRead();
 	return len;
 }
 
