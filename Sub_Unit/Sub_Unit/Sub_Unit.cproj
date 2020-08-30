@@ -126,6 +126,18 @@
     <Compile Include="ADC\ADC.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Buzzer\Buzzer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Buzzer\Buzzer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DataService\DataService.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DataService\DataService.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -135,7 +147,19 @@
     <Compile Include="NRF\nRF24L01.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="NRF\SPI_Slave.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="NRF\SPI_Slave.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Pins.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensors\Sensors.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensors\Sensors.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Variables.h">
@@ -144,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ADC" />
+    <Folder Include="DataService" />
+    <Folder Include="Buzzer" />
+    <Folder Include="Sensors" />
     <Folder Include="NRF" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

@@ -1,6 +1,5 @@
 #include "Variables.h"
 #include "NRF/nRF24L01.h"
-#include <avr/io.h>
 #include <util/delay.h>
 
 int main(void)

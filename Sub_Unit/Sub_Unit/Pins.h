@@ -10,5 +10,14 @@
 #define SS DDB4
 
 // ADC Pins
+// #define TEMP 5
+// #define MOIST_1 0
+// #define MOIST_2 1
+// #define MOIST_3 2
+// #define MOIST_4 3
+// #define MOIST_5 4
+
+// Output Pins
+#define BUZZER PD7		// D Port Buzzer Pin
 
 #endif /* PINS_H_ */

@@ -21,7 +21,7 @@
 #define PASSWORD			"98713893895"
 
 // Device Parameters
-#define NUM_SUB_UNITS		3
+#define NUM_SUB_UNITS		1
 #define BUZZER_DELAY		1000
 
 // Buffer Sizes

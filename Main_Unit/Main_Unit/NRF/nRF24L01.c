@@ -1,4 +1,32 @@
-#include "nRF24L01.h"
+#include "nRF24L01.h"						// Include NRF Header File
+
+void SPI_Init(void)
+{
+	//Set MOSI, SCK, CE and CSN as output
+	DDRB |= (1<<MOSI)|(1<<SCK)|(1<<CE)|(1<<CSN);
+	//Set MISO pin as input
+	DDRB &= ~(1<<MISO);
+	//Enable SPI in master mode with Focs/16
+	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
+	//Disable speed doubler
+	SPSR &= ~(1<<SPI2X);
+	//Set CSN HIGH to start, nothing to be sent to nRF yet
+	PORTB |= (1<<PB2);
+	//Set CE low to start, nothing to send/receive
+	PORTB &= ~(1<<PB1);
+}
+
+char WriteByteSPI(unsigned char cData)
+{
+	char flash_buffer;
+	//Load byte to Data register
+	SPDR = cData;
+	//Wait for the transmission to complete
+	while(!(SPSR & (1<<SPIF)));
+	//Return what's received from the nRF
+	flash_buffer = SPDR;
+	return SPDR;
+}
 
 // Reading registers in nRF
 uint8_t GetReg(uint8_t reg)
@@ -23,7 +51,7 @@ uint8_t GetReg(uint8_t reg)
 	return ret;
 }
 
-// Writing to the registers of nRF
+//Writing to the registers of nRF
 void WriteToNrf(uint8_t reg, uint8_t Package)
 {
 	_delay_us(10);
@@ -45,9 +73,13 @@ void WriteToNrf(uint8_t reg, uint8_t Package)
 uint8_t *WritetoNRF(uint8_t ReadWrite, uint8_t reg, uint8_t *val, uint8_t antVal)
 {
 	if (ReadWrite == W)
+	{
 		reg = W_REGISTER + reg;
+	}
 	else
+	{
 		reg = R_REGISTER + reg;
+	}
 	
 	static uint8_t ret[32];
 	

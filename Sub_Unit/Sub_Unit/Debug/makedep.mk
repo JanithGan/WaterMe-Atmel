@@ -4,7 +4,15 @@
 
 ADC\ADC.c
 
+Buzzer\Buzzer.c
+
+DataService\DataService.c
+
 main.c
 
 NRF\nRF24L01.c
+
+NRF\SPI_Slave.c
+
+Sensors\Sensors.c
 
