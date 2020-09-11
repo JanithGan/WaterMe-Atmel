@@ -254,7 +254,7 @@ int16_t ESP8266_DataAvailable()
 uint8_t ESP8266_DataRead()
 {
 	if(pointer < Counter)
-	return RESPONSE_BUFFER[pointer++];
+		return RESPONSE_BUFFER[pointer++];
 	else{
 		ESP8266_Clear();
 		return 0;

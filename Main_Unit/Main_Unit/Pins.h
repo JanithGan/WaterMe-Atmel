@@ -3,6 +3,8 @@
 
 // Output Pins
 #define BUZZER PD7		// D Port Buzzer Pin
+#define VALVE1 PC3
+#define VALVE2 PC2
 
 // Input Pins
 

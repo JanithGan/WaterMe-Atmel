@@ -16,6 +16,7 @@
 #define PORT				"80"
 #define API_READ_KEY		"CE0KEXTAJ7GVRUD0"
 #define API_WRITE_KEY		"23ED8M8OOLB2TKH0"
+#define API_FORCE_KEY		"FD6789XN4ORD88GF"
 
 #define SSID				"Janith Dialog 4G"
 #define PASSWORD			"98713893895"
@@ -43,6 +44,9 @@ float MoistureData[NUM_SUB_UNITS];		// Moisture Data
 
 char DataBuffer[DATA_BUFFER_SIZE];		// Data Buffer for JSON
 char SettingsBuffer[SETTINGS_BUFFER_SIZE];
+char ForcedBuffer[DATA_BUFFER_SIZE];
 char _buffer[DEFAULT_BUFFER_SIZE];		// Buffer for ESP8266
+
+int ValveStatus[NUM_SUB_UNITS];
 
 #endif /* VARIABLES_H_ */

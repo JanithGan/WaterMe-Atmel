@@ -183,6 +183,12 @@
     <Compile Include="Pins.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Valve\Valve.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Valve\Valve.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Variables.h">
       <SubType>compile</SubType>
     </Compile>
@@ -194,6 +200,7 @@
     <Folder Include="DataParser" />
     <Folder Include="Buzzer" />
     <Folder Include="DataService" />
+    <Folder Include="Valve" />
     <Folder Include="NRF" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

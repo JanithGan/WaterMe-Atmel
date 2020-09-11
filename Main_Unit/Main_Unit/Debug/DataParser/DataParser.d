@@ -32,6 +32,9 @@ DataParser/DataParser.d DataParser/DataParser.o: \
  ../DataParser/../DataService/../NRF/nRF24L01.h \
  ../DataParser/../DataService/../NRF/../Variables.h \
  ../DataParser/../DataService/../NRF/../Pins.h \
+ ../DataParser/../DataService/../Valve/Valve.h \
+ ../DataParser/../DataService/../Valve/../Variables.h \
+ ../DataParser/../DataService/../Valve/../Pins.h \
  ../DataParser/../JSON/cJSON.h
 
 ../DataParser/DataParser.h:
@@ -101,5 +104,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../DataParser/../DataService/../NRF/../Variables.h:
 
 ../DataParser/../DataService/../NRF/../Pins.h:
+
+../DataParser/../DataService/../Valve/Valve.h:
+
+../DataParser/../DataService/../Valve/../Variables.h:
+
+../DataParser/../DataService/../Valve/../Pins.h:
 
 ../DataParser/../JSON/cJSON.h:

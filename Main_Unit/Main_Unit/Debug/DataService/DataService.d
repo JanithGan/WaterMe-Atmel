@@ -32,7 +32,8 @@ DataService/DataService.d DataService/DataService.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  ../DataService/../NRF/nRF24L01.h ../DataService/../NRF/../Variables.h \
- ../DataService/../NRF/../Pins.h
+ ../DataService/../NRF/../Pins.h ../DataService/../Valve/Valve.h \
+ ../DataService/../Valve/../Variables.h ../DataService/../Valve/../Pins.h
 
 ../DataService/DataService.h:
 
@@ -103,3 +104,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../DataService/../NRF/../Variables.h:
 
 ../DataService/../NRF/../Pins.h:
+
+../DataService/../Valve/Valve.h:
+
+../DataService/../Valve/../Variables.h:
+
+../DataService/../Valve/../Pins.h:

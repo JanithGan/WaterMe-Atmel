@@ -1,9 +1,13 @@
 #include "Variables.h"					// Variable Definitions
 #include "Pins.h"						// Pin Definitions
+
 #include "ESP8266/USART_RS232_H_file.h"	// Include USART header file
 #include "ESP8266/ESP8266_H_file.h"		// Include ESP8266 header file
+
 #include "Buzzer/Buzzer.h"				// Include Buzzer header file
+#include "Valve/Valve.h"				// Include Valve Control header file
 #include "DataService/DataService.h"	// Include Data Service header file
+
 #include <util/delay.h>
 
 int main(void)
@@ -11,6 +15,8 @@ int main(void)
 	/* Initiations */
 	Buzzer_Init();					// Initiate Buzzer
 	ADC_Init();						// Initiate ADC
+	Valve_Init();					// Initiate Valve Control
+	
 	USART_Init(BAUD_RATE);			// Initiate USART with baud
 	Data_Service_Init();			// Initiate Data Services
 	
@@ -28,21 +34,28 @@ int main(void)
 		ESP8266_Refresh();
 		// Device_Data_Send();
 		
-		Device_Data_Receive();
-		_delay_ms(1000);
+		Force_Data_Receive();
 		
-		for (int i=0; i<= DEFAULT_BUFFER_SIZE; ++i)
-		{
-			USART_TxChar(SettingsBuffer[i]);						// Send each char of string till the NULL
-			i++;
-		}
-		USART_TxChar('\n');
-
+		//for (int i=0; i<= DEFAULT_BUFFER_SIZE; ++i)
+		//{
+		//USART_TxChar(SettingsBuffer[i]);						// Send each char of string till the NULL
+		//i++;
+		//}
+		//USART_TxChar('\n');
+		
 		// USART_SendString(_buffer);
 		
-		_delay_ms(1000);
+		//_delay_ms(1000);
 		
 		//_delay_ms(5000);
+		
+		//ValveStatus[0]= 1;
+		//Valve_Toggle();
+		//_delay_ms(1000);
+		//
+		//ValveStatus[0]= 0;
+		//Valve_Toggle();
+		//_delay_ms(1000);
 	}
 }
 
