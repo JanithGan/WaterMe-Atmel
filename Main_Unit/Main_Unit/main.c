@@ -10,9 +10,7 @@
 #include "DataService/DataService.h"	// Include Data Service header file
 
 #include <util/delay.h>
-
 #include <avr/interrupt.h>
-#include <stdint.h>
 
 int main(void)
 {
@@ -38,10 +36,9 @@ int main(void)
 	/* Loop */
 	while(1)
 	{
-		RF_Data_Get();
 		ESP8266_Refresh();
-		Device_Data_Send();
 		Force_Data_Receive();
+		Device_Data_Send();
 	}
 }
 

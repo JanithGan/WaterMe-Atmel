@@ -6,7 +6,7 @@
 // -------------------------------------------------Constants--------------------------------------------------------
 
 // CPU Frequency
-#define F_CPU				1000000UL	// 1MHz
+#define F_CPU				8000000UL	// 8MHz
 #define BAUD_RATE			9600		// USART Baud Rate
 
 // Connection Variables
@@ -32,7 +32,6 @@
 
 // Buffer Sizes
 #define DATA_BUFFER_SIZE		50 * NUM_SUB_UNITS 		// Data Buffer size
-#define SETTINGS_BUFFER_SIZE	50 + DATA_BUFFER_SIZE
 #define DEFAULT_BUFFER_SIZE		50 + DATA_BUFFER_SIZE	// ESP8266 Buffer size
 
 // -----------------------------------------Global Variables---------------------------------------------------------
@@ -43,8 +42,11 @@ float TempData[NUM_SUB_UNITS];			// Temperature Data
 float MoistureData[NUM_SUB_UNITS];		// Moisture Data
 
 char DataBuffer[DATA_BUFFER_SIZE];		// Data Buffer for JSON
-char SettingsBuffer[SETTINGS_BUFFER_SIZE];
+
 char ForcedBuffer[DATA_BUFFER_SIZE];
+char ReadBuffer[DEFAULT_BUFFER_SIZE];
+char SettingsBuffer[DEFAULT_BUFFER_SIZE];
+
 char _buffer[DEFAULT_BUFFER_SIZE];		// Buffer for ESP8266
 
 int ValveStatus[NUM_SUB_UNITS];

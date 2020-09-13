@@ -723,7 +723,7 @@ END GROUP
  *(.fini0)
                 0x00000a9c                _etext = .
 
-.data           0x00800100       0x12 load address 0x00000a9c
+.data           0x00800100       0x14 load address 0x00000a9c
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -737,31 +737,32 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x0080010a        0x8 main.o
+                0x0080010a        0x9 main.o
  *(.gnu.linkonce.r*)
-                0x00800112                . = ALIGN (0x2)
-                0x00800112                _edata = .
-                0x00800112                PROVIDE (__data_end, .)
+                0x00800114                . = ALIGN (0x2)
+ *fill*         0x00800113        0x1 
+                0x00800114                _edata = .
+                0x00800114                PROVIDE (__data_end, .)
 
-.bss            0x00800112        0x3
-                0x00800112                PROVIDE (__bss_start, .)
+.bss            0x00800114        0x3
+                0x00800114                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800112        0x2 Buzzer/Buzzer.o
-                0x00800112                Moisture
-                0x00800113                Temparature
- COMMON         0x00800114        0x1 NRF/nrf24.o
-                0x00800114                payload_len
-                0x00800115                PROVIDE (__bss_end, .)
+ COMMON         0x00800114        0x2 Buzzer/Buzzer.o
+                0x00800114                Moisture
+                0x00800115                Temparature
+ COMMON         0x00800116        0x1 NRF/nrf24.o
+                0x00800116                payload_len
+                0x00800117                PROVIDE (__bss_end, .)
                 0x00000a9c                __data_load_start = LOADADDR (.data)
-                0x00000aae                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000ab0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800115        0x0
+.noinit         0x00800117        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800115                _end = .
+                0x00800117                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
