@@ -36,6 +36,7 @@ SUBDIRS :=  \
 ../ADC \
 ../DataService \
 ../Buzzer \
+../USART \
 ../Sensors \
 ../NRF
 
@@ -46,9 +47,10 @@ C_SRCS +=  \
 ../Buzzer/Buzzer.c \
 ../DataService/DataService.c \
 ../main.c \
-../NRF/nRF24L01.c \
-../NRF/SPI_Slave.c \
-../Sensors/Sensors.c
+../NRF/nrf24.c \
+../NRF/radioPinFunctions.c \
+../Sensors/Sensors.c \
+../USART/USART_RS232_C_file.c
 
 
 PREPROCESSING_SRCS += 
@@ -62,36 +64,40 @@ ADC/ADC.o \
 Buzzer/Buzzer.o \
 DataService/DataService.o \
 main.o \
-NRF/nRF24L01.o \
-NRF/SPI_Slave.o \
-Sensors/Sensors.o
+NRF/nrf24.o \
+NRF/radioPinFunctions.o \
+Sensors/Sensors.o \
+USART/USART_RS232_C_file.o
 
 OBJS_AS_ARGS +=  \
 ADC/ADC.o \
 Buzzer/Buzzer.o \
 DataService/DataService.o \
 main.o \
-NRF/nRF24L01.o \
-NRF/SPI_Slave.o \
-Sensors/Sensors.o
+NRF/nrf24.o \
+NRF/radioPinFunctions.o \
+Sensors/Sensors.o \
+USART/USART_RS232_C_file.o
 
 C_DEPS +=  \
 ADC/ADC.d \
 Buzzer/Buzzer.d \
 DataService/DataService.d \
 main.d \
-NRF/nRF24L01.d \
-NRF/SPI_Slave.d \
-Sensors/Sensors.d
+NRF/nrf24.d \
+NRF/radioPinFunctions.d \
+Sensors/Sensors.d \
+USART/USART_RS232_C_file.d
 
 C_DEPS_AS_ARGS +=  \
 ADC/ADC.d \
 Buzzer/Buzzer.d \
 DataService/DataService.d \
 main.d \
-NRF/nRF24L01.d \
-NRF/SPI_Slave.d \
-Sensors/Sensors.d
+NRF/nrf24.d \
+NRF/radioPinFunctions.d \
+Sensors/Sensors.d \
+USART/USART_RS232_C_file.d
 
 OUTPUT_FILE_PATH +=Sub_Unit.elf
 
@@ -135,14 +141,14 @@ DataService/DataService.o: ../DataService/DataService.c
 	@echo Finished building: $<
 	
 
-NRF/nRF24L01.o: ../NRF/nRF24L01.c
+NRF/nrf24.o: ../NRF/nrf24.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.4.351\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.4.351\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-NRF/SPI_Slave.o: ../NRF/SPI_Slave.c
+NRF/radioPinFunctions.o: ../NRF/radioPinFunctions.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.4.351\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.4.351\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -150,6 +156,13 @@ NRF/SPI_Slave.o: ../NRF/SPI_Slave.c
 	
 
 Sensors/Sensors.o: ../Sensors/Sensors.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.4.351\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.4.351\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+USART/USART_RS232_C_file.o: ../USART/USART_RS232_C_file.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.4.351\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.4.351\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -10,9 +10,11 @@ DataService\DataService.c
 
 main.c
 
-NRF\nRF24L01.c
+NRF\nrf24.c
 
-NRF\SPI_Slave.c
+NRF\radioPinFunctions.c
 
 Sensors\Sensors.c
+
+USART\USART_RS232_C_file.c
 

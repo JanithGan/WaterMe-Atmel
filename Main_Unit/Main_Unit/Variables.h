@@ -49,4 +49,7 @@ char _buffer[DEFAULT_BUFFER_SIZE];		// Buffer for ESP8266
 
 int ValveStatus[NUM_SUB_UNITS];
 
+//volatile uint8_t data_array[3] = {0,1,0};
+//volatile uint8_t pot_value[0] = {0};
+
 #endif /* VARIABLES_H_ */

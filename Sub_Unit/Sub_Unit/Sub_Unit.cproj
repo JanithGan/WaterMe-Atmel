@@ -141,16 +141,19 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="NRF\nRF24L01.c">
+    <Compile Include="NRF\nrf24.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="NRF\nrf24.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="NRF\nRF24L01.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="NRF\SPI_Slave.c">
+    <Compile Include="NRF\radioPinFunctions.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="NRF\SPI_Slave.h">
+    <Compile Include="NRF\radioPinFunctions.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Pins.h">
@@ -162,6 +165,12 @@
     <Compile Include="Sensors\Sensors.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="USART\USART_RS232_C_file.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="USART\USART_RS232_H_file.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Variables.h">
       <SubType>compile</SubType>
     </Compile>
@@ -170,6 +179,7 @@
     <Folder Include="ADC" />
     <Folder Include="DataService" />
     <Folder Include="Buzzer" />
+    <Folder Include="USART" />
     <Folder Include="Sensors" />
     <Folder Include="NRF" />
   </ItemGroup>

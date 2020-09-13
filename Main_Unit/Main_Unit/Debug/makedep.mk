@@ -18,9 +18,9 @@ JSON\cJSON.c
 
 main.c
 
-NRF\nRF24L01.c
+NRF\nrf24.c
 
-NRF\SPI_Master.c
+NRF\radioPinFunctions.c
 
 Valve\Valve.c
 

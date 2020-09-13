@@ -168,16 +168,19 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="NRF\nRF24L01.c">
+    <Compile Include="NRF\nrf24.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="NRF\nrf24.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="NRF\nRF24L01.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="NRF\SPI_Master.c">
+    <Compile Include="NRF\radioPinFunctions.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="NRF\SPI_Master.h">
+    <Compile Include="NRF\radioPinFunctions.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Pins.h">

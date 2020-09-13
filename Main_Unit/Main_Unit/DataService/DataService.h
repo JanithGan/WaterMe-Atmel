@@ -5,8 +5,9 @@
 #include "../ADC/ADC.h"
 #include "../DataParser/DataParser.h"
 #include "../ESP8266/ESP8266_H_file.h"
-#include "../NRF/nRF24L01.h"
+#include "../NRF/nrf24.h"
 #include "../Valve/Valve.h"
+#include "../Buzzer/Buzzer.h"
 #include <stdio.h>
 #include <string.h>
 #include <util/delay.h>

@@ -3,7 +3,7 @@
 void Read_Temp(){
 	int temp = (int)ADC_Read(5);
 	if((temp>0) && (temp<1024)){
-		Temparature = temp;
+		Temparature = temp / 4;
 	}
 }
 
@@ -18,5 +18,5 @@ void Read_Moisture(){
 			count = count + 1;
 		}
 	}
-	Moisture = sum / count;
+	Moisture = sum / (count * 4);
 }

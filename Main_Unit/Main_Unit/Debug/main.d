@@ -23,6 +23,7 @@ main.d main.o: .././main.c .././Variables.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
+ .././NRF/nrf24.h .././NRF/../Variables.h .././NRF/nRF24L01.h \
  .././Buzzer/Buzzer.h .././Buzzer/../Variables.h .././Buzzer/../Pins.h \
  .././Valve/Valve.h .././Valve/../Variables.h .././Valve/../Pins.h \
  .././DataService/DataService.h .././DataService/../Variables.h \
@@ -33,9 +34,8 @@ main.d main.o: .././main.c .././Variables.h \
  .././DataService/../DataParser/../DataService/DataService.h \
  .././DataService/../DataParser/../JSON/cJSON.h \
  .././DataService/../ESP8266/ESP8266_H_file.h \
- .././DataService/../NRF/nRF24L01.h \
- .././DataService/../NRF/../Variables.h .././DataService/../NRF/../Pins.h \
- .././DataService/../Valve/Valve.h
+ .././DataService/../NRF/nrf24.h .././DataService/../Valve/Valve.h \
+ .././DataService/../Buzzer/Buzzer.h
 
 .././Variables.h:
 
@@ -91,6 +91,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
+.././NRF/nrf24.h:
+
+.././NRF/../Variables.h:
+
+.././NRF/nRF24L01.h:
+
 .././Buzzer/Buzzer.h:
 
 .././Buzzer/../Variables.h:
@@ -121,10 +127,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././DataService/../ESP8266/ESP8266_H_file.h:
 
-.././DataService/../NRF/nRF24L01.h:
-
-.././DataService/../NRF/../Variables.h:
-
-.././DataService/../NRF/../Pins.h:
+.././DataService/../NRF/nrf24.h:
 
 .././DataService/../Valve/Valve.h:
+
+.././DataService/../Buzzer/Buzzer.h:
