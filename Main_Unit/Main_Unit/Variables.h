@@ -38,8 +38,8 @@
 
 uint8_t Connect_Status;
 
-float TempData[NUM_SUB_UNITS];			// Temperature Data
-float MoistureData[NUM_SUB_UNITS];		// Moisture Data
+double TempData[NUM_SUB_UNITS];			// Temperature Data
+double MoistureData[NUM_SUB_UNITS];		// Moisture Data
 
 char DataBuffer[DATA_BUFFER_SIZE];		// Data Buffer for JSON
 

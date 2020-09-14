@@ -48,7 +48,7 @@ void Force_Data_Receive(){
 	
 	ESP8266_Send(_buffer);
 	Read_Data(_buffer);
-	_delay_ms(1000);							// ThingSpeak server delay
+	_delay_ms(2000);							// ThingSpeak server delay
 	
 	char *IPD_pointer = strstr(_buffer, "+IPD,");
 	
